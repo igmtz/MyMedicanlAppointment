@@ -1,3 +1,5 @@
+import java.util.Date;
+
 import static ui.UIMenu.*;
 
 public class Main {
@@ -6,8 +8,15 @@ public class Main {
 
         // Constructor de objeto con parámetros obligatorios
         Doctor myDoctor = new Doctor("Gonzalo Martínez", "Pediatría");
-        System.out.println(myDoctor.name);
-        System.out.println(myDoctor.speciality);
+        myDoctor.addAvailableAppointment(new Date(), "4 pm");
+        myDoctor.addAvailableAppointment(new Date(), "10 am");
+        myDoctor.addAvailableAppointment(new Date(), "1 pm");
+
+        System.out.println(myDoctor.getAvailableAppointment()); // Genera la lista de las direcciones de los objetos Appointments
+
+        for(Doctor.AvailableAppointment availableAppointment: myDoctor.getAvailableAppointment()){
+            System.out.println(availableAppointment.getDate()+" "+availableAppointment.getTime());
+        } // Imprime los datos de cada cita
 
         Patient patient = new Patient("Alejandra", "alejandra@mail.com");
         patient.setWeight(54.6);
